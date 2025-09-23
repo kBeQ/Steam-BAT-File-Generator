@@ -1,5 +1,3 @@
-
-
 import React from 'react'; 
 import { SteamGame, ActionType, NewActionData, DisplayModeOption, ActionDisplayMode, DisplayModeCategory } from './types'; 
 import { 
@@ -7,8 +5,7 @@ import {
     ListBulletIcon, Bars3BottomLeftIcon, ViewColumnsIcon, CommandLineIcon, 
     Squares2X2Icon, ListOrderedIcon, ChatBubbleBottomCenterTextIcon, 
     CodeBracketSquareIcon, TagIcon, LightbulbIcon, Bars4Icon,
-    ArrowLeftIcon, ArrowRightIcon, // Ensure these are imported if used elsewhere, though primarily for ActionItem
-    RectangleGroupIcon, SquaresPlusIcon, XCircleIcon // New and updated icons
+    RectangleGroupIcon, SquaresPlusIcon
 } from './icons'; 
 
 
@@ -66,7 +63,7 @@ export const DISPLAY_MODE_CATEGORIES: DisplayModeCategory[] = [
     ],
   },
   {
-    id: 'horizontal-layouts', 
+    id: 'horizontal-layouts',
     label: 'Horizontal Layouts',
     icon: Bars4Icon, 
     modes: [

@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect, useRef } from 'react';
-import { ActionType, AddActionPanelProps, SteamGame } from '../types';
+import { ActionType, AddActionPanelProps } from '../types';
 import { ACTION_TYPE_OPTIONS, ACTION_TYPE_VISUALS, PlusCircleIcon } from '../constants';
 
 const AddActionPanel: React.FC<AddActionPanelProps> = ({ onAddAction, predefinedGames }) => {
@@ -21,30 +21,28 @@ const AddActionPanel: React.FC<AddActionPanelProps> = ({ onAddAction, predefined
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    let newActionData;
     switch (currentActionType) {
       case ActionType.START_APP:
         if (!path.trim()) { alert("Application path/name cannot be empty."); return; }
-        newActionData = { type: ActionType.START_APP, path, displayName: appDisplayName.trim() || undefined };
+        onAddAction({ type: ActionType.START_APP, path, displayName: appDisplayName.trim() || undefined });
         break;
       case ActionType.WAIT:
         if (duration <= 0) { alert("Wait duration must be a positive number."); return; }
-        newActionData = { type: ActionType.WAIT, duration, displayName: actionDisplayName.trim() || undefined };
+        onAddAction({ type: ActionType.WAIT, duration, displayName: actionDisplayName.trim() || undefined });
         break;
       case ActionType.LAUNCH_STEAM_GAME:
         if (!appId.trim()) { 
             alert("Steam AppID cannot be empty. Please use the SteamDB link to find an AppID if needed."); return; 
         }
-        newActionData = { type: ActionType.LAUNCH_STEAM_GAME, appId, gameTitle: gameTitle.trim() || `Game (AppID: ${appId})` };
+        onAddAction({ type: ActionType.LAUNCH_STEAM_GAME, appId, gameTitle: gameTitle.trim() || `Game (AppID: ${appId})` });
         break;
       case ActionType.KILL_PROCESS:
         if (!processName.trim()) { alert("Process name cannot be empty."); return; }
-        newActionData = { type: ActionType.KILL_PROCESS, processName, displayName: actionDisplayName.trim() || undefined };
+        onAddAction({ type: ActionType.KILL_PROCESS, processName, displayName: actionDisplayName.trim() || undefined });
         break;
       default:
         return;
     }
-    onAddAction(newActionData);
     
     setPath('');
     setAppDisplayName('');

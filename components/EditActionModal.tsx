@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Action, ActionType, EditActionModalProps, StartAppAction, WaitAction, LaunchSteamGameAction, KillProcessAction, UnknownAction } from '../types';
 
 const EditActionModal: React.FC<EditActionModalProps> = ({ isOpen, action, onSave, onCancel, predefinedGames }) => {

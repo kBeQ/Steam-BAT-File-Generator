@@ -6,7 +6,7 @@ import ActionItem from './components/ActionItem';
 import EditActionModal from './components/EditActionModal'; 
 import SteamGameCard from './components/SteamGameCard';
 import ActionDisplayModeBar from './components/ActionDisplayModeBar';
-import { PREDEFINED_GAMES, ROCKET_LEAGUE_EXAMPLE_SEQUENCE, DownloadIcon, LightbulbIcon, FolderArrowDownIcon, DISPLAY_MODE_CATEGORIES } from './constants';
+import { PREDEFINED_GAMES, ROCKET_LEAGUE_EXAMPLE_SEQUENCE, DownloadIcon, LightbulbIcon, DISPLAY_MODE_CATEGORIES } from './constants';
 
 const extractAppName = (filePath: string): string => {
   if (!filePath) return '';
@@ -152,7 +152,7 @@ const App: React.FC = () => {
     setDragOverActionId(null);
   };
 
-  const handleDragEnd = (event: React.DragEvent<HTMLLIElement>) => {
+  const handleDragEnd = (_event: React.DragEvent<HTMLLIElement>) => {
     setDraggingActionId(null);
     setDragOverActionId(null);
   };
@@ -168,7 +168,7 @@ const App: React.FC = () => {
     const gameActionIndex = gameAction ? currentActions.indexOf(gameAction) : -1;
     
     const startAppActions = currentActions.filter(a => a.type === ActionType.START_APP) as StartAppAction[];
-    const firstHelperAppAction = startAppActions.find((a, index) => gameActionIndex === -1 || currentActions.indexOf(a) < gameActionIndex);
+    const firstHelperAppAction = startAppActions.find(a => gameActionIndex === -1 || currentActions.indexOf(a) < gameActionIndex);
 
     if (firstHelperAppAction) {
       const nameSource = firstHelperAppAction.displayName?.trim() ? firstHelperAppAction.displayName : firstHelperAppAction.path;
@@ -333,8 +333,8 @@ const App: React.FC = () => {
     const parsedActions: Action[] = [];
     let lastRemComment: string | null = null;
 
-    const steamGameRegex = /^start\s+""\s+"steam:\/\/rungameid\/(\d+)"/i;
-    const startAppRegex = /^start\s+""\s+"(.*?)"/i;
+    const steamGameRegex = /^start\s+\"\"\s+\"steam:\/\/rungameid\/(\d+)\"/i;
+    const startAppRegex = /^start\s+\"\"\s+\"(.*?)\"/i;
     const timeoutRegex = /^timeout\s+\/t\s+(\d+)(?:\s+\/nobreak(?:\s+>nul)?)?/i;
     const taskkillRegex = /^taskkill\s+\/IM\s+(.*?)\s+\/F/i;
     const remCommentRegex = /^REM\s+(.*)/i;
@@ -385,7 +385,7 @@ const App: React.FC = () => {
 
             if (potentialDisplayName && potentialDisplayName !== lastRemComment) {
                  parsedDisplayName = potentialDisplayName;
-            } else if (potentialDisplayName && !knownPrefixes.some(p => lastRemComment.toLowerCase().startsWith(p.toLowerCase()))) {
+            } else if (potentialDisplayName && lastRemComment && !knownPrefixes.some(p => lastRemComment!.toLowerCase().startsWith(p.toLowerCase()))) {
                 parsedDisplayName = potentialDisplayName;
             }
         }
@@ -519,7 +519,7 @@ const App: React.FC = () => {
     batImportDragCounter.current = 0;
 
     if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
-      const droppedFile = Array.from(e.dataTransfer.files).find(file => file.name.toLowerCase().endsWith('.bat'));
+      const droppedFile = Array.from(e.dataTransfer.files).find((file: File) => file.name.toLowerCase().endsWith('.bat'));
       if (droppedFile) {
         setBatFileToParse(droppedFile);
       } else {

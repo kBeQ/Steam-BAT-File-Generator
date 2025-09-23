@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { ActionDisplayMode, ActionDisplayModeBarProps, DisplayModeCategory } from '../types';
+import { ActionDisplayMode, ActionDisplayModeBarProps } from '../types';
 
 const ActionDisplayModeBar: React.FC<ActionDisplayModeBarProps> = ({ currentMode, onSetMode, categories }) => {
   const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(() => {

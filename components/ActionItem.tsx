@@ -1,7 +1,7 @@
 
 import React from 'react';
-import { Action, ActionItemProps, ActionType, StartAppAction, WaitAction, LaunchSteamGameAction, KillProcessAction, UnknownAction, ActionDisplayMode } from '../types';
-import { PlayIcon, ClockIcon, SteamIcon, SkullIcon, QuestionMarkCircleIcon, ArrowUpIcon, ArrowDownIcon, XCircleIcon, PencilSquareIcon, ArrowLeftIcon, ArrowRightIcon } from '../constants'; // Updated XCircleIcon
+import { Action, ActionItemProps, ActionType, StartAppAction, WaitAction, KillProcessAction, UnknownAction, ActionDisplayMode } from '../types';
+import { PlayIcon, ClockIcon, SteamIcon, SkullIcon, QuestionMarkCircleIcon, ArrowUpIcon, ArrowDownIcon, XCircleIcon, PencilSquareIcon, ArrowLeftIcon, ArrowRightIcon } from '../icons'; // Updated XCircleIcon
 
 const getActionTypeColor = (type: ActionType): string => {
   switch (type) {
