@@ -1,0 +1,6 @@
+{
+  "name": "Steam BAT File Generator",
+  "description": "A tool to create custom .bat files for launching Steam games with a sequence of actions like starting helper apps, waiting, and killing processes.",
+  "requestFramePermissions": [],
+  "prompt": ""
+}
