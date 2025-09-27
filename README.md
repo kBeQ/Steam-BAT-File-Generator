@@ -71,7 +71,7 @@ A user-friendly, web-based tool to create custom `.bat` files for launching Stea
 
 ## 🌐 Online Version
 
-<iframe frameborder="0" src="https://itch.io/embed/3903631" width="552" height="167"><a href="https://kbeq.itch.io/steam-bat-file-generator">Steam BAT File Generator by kBeQ</a></iframe>
+Try the Steam BAT File Generator directly in your browser: [https://kbeq.itch.io/steam-bat-file-generator](https://kbeq.itch.io/steam-bat-file-generator)
 
 ## 🤝 Contributing
 
