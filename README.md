@@ -69,6 +69,10 @@ A user-friendly, web-based tool to create custom `.bat` files for launching Stea
     -   Right-click it and select "Send to" > "Desktop (create shortcut)".
     -   You can now rename the shortcut and change its icon by following the in-app **"Tips & Tricks"** section.
 
+## 🌐 Online Version
+
+<iframe frameborder="0" src="https://itch.io/embed/3903631" width="552" height="167"><a href="https://kbeq.itch.io/steam-bat-file-generator">Steam BAT File Generator by kBeQ</a></iframe>
+
 ## 🤝 Contributing
 
 Contributions are always welcome! Feel free to open an issue to report bugs or suggest features, or submit a pull request with your improvements.
